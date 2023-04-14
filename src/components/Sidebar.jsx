@@ -3,23 +3,24 @@ import spotifyLogo from "../logo/Spotify_Logo.png";
 import { FaHome, FaBookOpen } from "react-icons/fa";
 import { useState } from "react";
 import { useDispatch } from "react-redux";
-import { getQueryAction, resetSearchAction } from "../redux/actions";
+import { getQueryAction, resetAction } from "../redux/actions";
+import { Button, Form } from "react-bootstrap";
 
 const Sidebar = () => {
-  const [query, setQuery] = useState("");
+  const [search, setSearch] = useState("");
   const dispatch = useDispatch();
   const location = useLocation();
 
-  const search = e => {
+  const handleSubmit = e => {
     e.preventDefault();
-    dispatch(getQueryAction(query));
-    setQuery("");
+    dispatch(getQueryAction(search));
+    setSearch("");
   };
 
   return (
     <nav className="navbar navbar-expand-md navbar-white bg-navbar fixed-left justify-content-between" id="sidebar">
       <div className="nav-container">
-        <Link className="navbar-brand" to="/" onClick={() => dispatch(resetSearchAction())}>
+        <Link className="navbar-brand" to="/" onClick={() => dispatch(resetAction())}>
           <img src={spotifyLogo} alt="Spotify_Logo" width={131} height={40} />
         </Link>
         <button
@@ -37,7 +38,7 @@ const Sidebar = () => {
           <div className="navbar-nav">
             <ul className="pt-3">
               <li>
-                <Link className="nav-item nav-link" to="/" onClick={() => dispatch(resetSearchAction())}>
+                <Link className="nav-item nav-link" to="/" onClick={() => dispatch(resetAction())}>
                   <FaHome className="fs-4" />
                   &nbsp; Home
                 </Link>
@@ -50,7 +51,7 @@ const Sidebar = () => {
               </li>
               {location.pathname === "/" && (
                 <li>
-                  <form className="input-group mt-3" onSubmit={search}>
+                  <Form className="input-group mt-3" onSubmit={handleSubmit}>
                     <input
                       type="text"
                       className="form-control mb-2"
@@ -58,15 +59,20 @@ const Sidebar = () => {
                       placeholder="Search"
                       aria-label="Search"
                       aria-describedby="basic-addon2"
-                      value={query}
-                      onChange={e => setQuery(e.target.value)}
+                      value={search}
+                      onChange={e => setSearch(e.target.value)}
                     />
                     <div className="input-group-append" style={{ marginBottom: "4%" }}>
-                      <button className="btn btn-outline-secondary" type="submit" id="button-addon1">
+                      <Button
+                        className="btn btn-outline-secondary"
+                        onClick={handleSubmit}
+                        type="submit"
+                        id="button-addon1"
+                      >
                         GO
-                      </button>
+                      </Button>
                     </div>
-                  </form>
+                  </Form>
                 </li>
               )}
             </ul>

@@ -7,10 +7,10 @@ import { getHipHopAction, getPopAction, getRockAction, getSearchAction } from ".
 
 const Main = () => {
   const query = useSelector(state => state.home.query);
-  const searchEndpoint = `https://striveschool-api.herokuapp.com/api/deezer/search?q=${query}`;
   const rockEndpoint = "https://striveschool-api.herokuapp.com/api/deezer/search?q=rock%20classics";
   const popEndpoint = "https://striveschool-api.herokuapp.com/api/deezer/search?q=pop%20culture";
   const hipHopEndpoint = "https://striveschool-api.herokuapp.com/api/deezer/search?q=hip%20hop";
+  const searchEndpoint = `https://striveschool-api.herokuapp.com/api/deezer/search?q=${query}`;
   const dispatch = useDispatch();
 
   useEffect(() => {
