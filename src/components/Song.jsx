@@ -8,7 +8,7 @@ const Song = ({ song }) => {
         <Image fluid src={song.album.cover_medium} alt="1" />
       </Link>
       <p>
-        <Link className="fs-6 link" to="/album_page.html?id=songInfo.album.id">
+        <Link className="fs-6 link" to={`/album/${song.album.id}`}>
           {song.album.title} <br />
         </Link>
         <Link className="link" to={`/artist/${song.artist.id}`}>

@@ -4,6 +4,7 @@ export const GET_HIP_HOP = "GET_HIP_HOP";
 export const GET_SONG = "GET_SONG";
 export const GET_SEARCH = "GET_SEARCH";
 export const RESET_SEARCH = "RESET_SEARCH";
+export const GET_ALBUM = "GET_ALBUM";
 
 export const getQueryAction = query => ({ type: GET_SONG, payload: query });
 export const resetAction = () => ({ type: RESET_SEARCH, payload: [] });
@@ -14,6 +15,7 @@ export const getSearchAction = url => {
       let response = await fetch(url);
       if (response.ok) {
         let songs = await response.json();
+        songs.data.sort(() => Math.random() - 0.5);
 
         dispatch({ type: GET_SEARCH, payload: songs.data });
       }
@@ -64,6 +66,20 @@ export const getHipHopAction = url => {
         songs.data.sort(() => Math.random() - 0.5);
 
         dispatch({ type: GET_HIP_HOP, payload: songs.data });
+      }
+    } catch (error) {
+      console.log(error);
+    }
+  };
+};
+
+export const albumAction = url => {
+  return async dispatch => {
+    try {
+      const response = await fetch(url);
+      if (response.ok) {
+        let songs = await response.json();
+        dispatch({ type: GET_ALBUM, payload: songs });
       }
     } catch (error) {
       console.log(error);
