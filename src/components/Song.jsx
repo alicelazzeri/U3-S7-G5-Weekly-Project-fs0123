@@ -1,17 +1,19 @@
 import { Link } from "react-router-dom";
 import { Image } from "react-bootstrap";
 
-const Song = () => {
+const Song = ({ song }) => {
   return (
     <>
-      <Link to="/album_page.html?id=">
-        <Image fluid src="https://picsum.photos/200/200" alt="1" />
+      <Link to={`/album/${song.album.id}`}>
+        <Image fluid src={song.album.cover_medium} alt="1" />
       </Link>
       <p>
-        <Link to="/album_page.html?id=songInfo.album.id">
-          Album: songInfo.album.title <br />
+        <Link className="fs-6 link" to="/album_page.html?id=songInfo.album.id">
+          {song.album.title} <br />
         </Link>
-        <Link to="/artist_page.html?id=songInfo.artist.id">Artist: songInfo.artist.name</Link>
+        <Link className="link" to={`/artist/${song.artist.id}`}>
+          {song.artist.name}
+        </Link>
       </p>
     </>
   );
