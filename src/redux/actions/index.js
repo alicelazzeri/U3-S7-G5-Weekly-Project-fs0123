@@ -11,9 +11,9 @@ export const resetAction = () => ({ type: RESET_SEARCH, payload: [] });
 export const getSearchAction = url => {
   return async dispatch => {
     try {
-      let resp = await fetch(url);
-      if (resp.ok) {
-        let songs = await resp.json();
+      let response = await fetch(url);
+      if (response.ok) {
+        let songs = await response.json();
 
         dispatch({ type: GET_SEARCH, payload: songs.data });
       }
