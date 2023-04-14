@@ -1,7 +1,9 @@
 import { Col, Row } from "react-bootstrap";
-import { Link } from "react-router-dom";
+import { Link, useParams } from "react-router-dom";
 
 const MainAlbum = () => {
+  const params = useParams();
+  const albumUrl = `https://striveschool-api.herokuapp.com/api/deezer/album/${params.id}`;
   return (
     <>
       <Row className="mb-3">

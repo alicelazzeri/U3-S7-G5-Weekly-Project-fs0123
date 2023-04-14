@@ -1,7 +1,9 @@
 import { Button, Col, Row } from "react-bootstrap";
-import { Link } from "react-router-dom";
+import { Link, useParams } from "react-router-dom";
 
 const MainArtist = () => {
+  const params = useParams();
+  const artistUrl = `https://striveschool-api.herokuapp.com/api/deezer/artist/${params.id}`;
   return (
     <>
       <Row className="mb-3">
