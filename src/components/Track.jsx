@@ -1,21 +1,21 @@
-import { Col, Container, Row } from "react-bootstrap";
+import { Container } from "react-bootstrap";
 
 const Track = ({ track }) => {
   return (
     <Container fluid id="trackCnt">
-      <Row>
-        <Col className="text-light">
+      <div className="d-flex justify-content-between align-items-center gap-5">
+        <div className="text-light">
           <p className="fw-bold">{track.title}</p>
-        </Col>
-        <Col>
-          <p className="text-light ms-5">{track.artist.name}</p>
-        </Col>
-        <Col>
-          <p className="text-light ms-5">
+        </div>
+        <div>
+          <p className="text-light">{track.artist.name}</p>
+        </div>
+        <div>
+          <p className="text-light">
             {Math.floor(track.duration / 60)}:{(track.duration % 60).toString().padStart(2, "0")}
           </p>
-        </Col>
-      </Row>
+        </div>
+      </div>
     </Container>
   );
 };
