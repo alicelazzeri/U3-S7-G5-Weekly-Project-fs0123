@@ -127,10 +127,10 @@ ul {
   font-weight: 700;
   font-size: 12px;
   opacity: 0.3;
+  text-decoration: none;
 }
 
 .mainLinks a:hover {
-  text-decoration: none;
   opacity: 1;
   transition: 0.3s;
 }
